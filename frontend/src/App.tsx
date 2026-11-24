@@ -14,7 +14,7 @@ export default function App() {
 
   return (
     <div style={{ display: 'flex'}}>
-      <Sidebar currentPage={page} onreplace={setPage} />
+      <Sidebar currentPage={page} onReplace={setPage} />
 
       <main style={{ flex: 1, padding: 32 }}>
         <h1>{page}</h1>

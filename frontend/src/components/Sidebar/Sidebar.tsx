@@ -7,10 +7,10 @@ const pages = [
 
 type Props = {
     currentPage: string
-    onreplace: (page: string) => void
+    onReplace: (page: string) => void
 }
 
-export default function Sidebar({ currentPage, onreplace }: Props) {
+export default function Sidebar({ currentPage, onReplace }: Props) {
     return (
         <aside className="sidebar">
 
@@ -19,7 +19,7 @@ export default function Sidebar({ currentPage, onreplace }: Props) {
                     <button
                         key={page}
                         className={`sidebar-button ${currentPage === page ? 'active' : ''}`}
-                        onClick={() => onreplace(page)}
+                        onClick={() => onReplace(page)}
                     >
                         {page}
                     </button>

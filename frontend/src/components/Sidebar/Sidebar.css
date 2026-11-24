@@ -24,3 +24,13 @@
   cursor: pointer;
 }
 
+.sidebar button:hover {
+  color: #fff;
+  background: #111;
+}
+
+.sidebar button.active {
+  color: #fff;
+  background: #151515;
+  border-left-color: #fff;
+}
