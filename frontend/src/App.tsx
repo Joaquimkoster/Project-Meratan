@@ -1,19 +1,25 @@
 import { useEffect, useState } from 'react';
+import Sidebar from './components/Sidebar/Sidebar';
 
 export default function App() {
-  const [health, setHealth] = useState('verificando...')
+  const [page, setPage] = useState('home');
+  const [health, setHealth] = useState('checking...')
 
   useEffect(() => {
     fetch('/api/health')
-      .then(resposta => resposta.json())
-      .then(dados => setHealth(`conectado · v${dados.versao}`))
+      .then(response => response.json())
+      .then(data => setHealth(`connected · v${data.version}`))
       .catch(() => setHealth('backend offline'))
   }, [])
 
   return (
-    <main>
-      <h1>Meratan</h1>
-      <p>Backend: {health}</p>
-    </main>
+    <div style={{ display: 'flex'}}>
+      <Sidebar currentPage={page} onreplace={setPage} />
+
+      <main style={{ flex: 1, padding: 32 }}>
+        <h1>{page}</h1>
+        <p>Backend: {health}</p>
+      </main>
+    </div>
   )
 }

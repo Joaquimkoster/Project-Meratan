@@ -17,7 +17,9 @@ The project will come in two forms:
 - **Meratan (examiner workstation)**: an installable program (`.deb`, `.msi`).
 - **Meratan Collector**: a portable version that runs straight from a USB drive, with no installation.
 
-> Undergraduate thesis project (TCC), under development.
+> Undergraduate thesis project, under development.
+
+Development documentation (in Portuguese): [environment, routes, database and commands](Docs/README.md).
 
 ---
 
