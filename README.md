@@ -25,7 +25,7 @@ The project will come in two forms:
 
 | Part | Technology |
 |---|---|
-| Backend | Java 21 · Spring Boot · Spring Data JPA · Validation |
+| Backend | Java 25 · Spring Boot · Spring Data JPA · Validation |
 | Database | H2 (embedded SQL) · Flyway (migrations) |
 | Frontend | React · TypeScript · Vite |
 | Build | Maven (backend) · npm (frontend) |
@@ -58,7 +58,7 @@ meratan-v2/
 
 | Tool | Version | How to check |
 |---|---|---|
-| Java (JDK) | 21 | `java -version` |
+| Java (JDK) | 25 (LTS) | `java -version` |
 | Maven | 3.8+ | `mvn -v` |
 | Node.js | 20.19+ or 22+ | `node -v` |
 
@@ -66,7 +66,7 @@ To install on Ubuntu:
 
 ```bash
 sudo apt update
-sudo apt install openjdk-21-jdk maven unzip
+sudo apt install openjdk-25-jdk maven unzip
 ```
 
 ---
