@@ -8,7 +8,7 @@ const tabs: Tab[] = [
 ]
 
 export default function ForensicAnalysis() {
-    const [tab, setTab] = useState('overview')
+    const [tab, setTab] = useState('file-analysis')
 
     return (
         <div className="forensic">
