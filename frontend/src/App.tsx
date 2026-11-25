@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import Sidebar from './components/Sidebar/Sidebar';
+import Home from './pages/Home/Home';
+import ForensicAnalysis from './pages/ForensicAnalysis/ForensicAnalysis';
 
 export default function App() {
   const [page, setPage] = useState('home');
@@ -17,8 +19,8 @@ export default function App() {
       <Sidebar currentPage={page} onReplace={setPage} />
 
       <main style={{ flex: 1, padding: 32 }}>
-        <h1>{page}</h1>
-        <p>Backend: {health}</p>
+        {page === 'home' && <Home health={health} />}
+        {page === 'forensic analysis' && <ForensicAnalysis />}
       </main>
     </div>
   )

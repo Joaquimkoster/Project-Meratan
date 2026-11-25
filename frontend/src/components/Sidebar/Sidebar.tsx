@@ -25,8 +25,6 @@ export default function Sidebar({ currentPage, onReplace }: Props) {
                     </button>
                 ))}
             </nav>
-
-            <div className="sidebar-footer">v0.0.1</div>
         </aside>
     )
 }

@@ -1,0 +1,36 @@
+.forensic-subtitle {
+  color: #777;
+  margin-top: -8px;
+}
+
+.forensic-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.forensic-card {
+  border: 1px solid #222;
+  padding: 20px;
+  cursor: pointer;
+}
+
+.forensic-card:hover {
+  border-color: #fff;
+}
+
+.forensic-card h2 {
+  font-size: 16px;
+  margin: 0 0 8px;
+}
+
+.forensic-card p {
+  font-size: 13px;
+  color: #888;
+  margin: 0;
+}
+
+.forensic .tabs {
+    margin-top: 57px;
+}
