@@ -19,8 +19,8 @@ export default function App() {
       <Sidebar currentPage={page} onReplace={setPage} />
 
       <main style={{ flex: 1, padding: 32 }}>
-        {page === 'home' && <Home health={health} />}
-        {page === 'forensic analysis' && <ForensicAnalysis />}
+        {page === 'Home' && <Home health={health} />}
+        {page === 'Forensic Analysis' && <ForensicAnalysis />}
       </main>
     </div>
   )

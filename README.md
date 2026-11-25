@@ -2,7 +2,7 @@
 
 > Digital Investigation and Cybersecurity Platform
 
-**Meratan** is a **local** platform for digital investigation and forensic analysis, built to support forensic examiners and police teams. It runs entirely on the examiner's machine and sends nothing to the cloud. It brings together, in one place:
+**Meratan** is a **local** platform for digital investigation and forensic analysis, built to support forensic examiners and police teams. It runs entirely on the examiner's machine and sends nothing to the cloud. Its planned scope brings together, in one place:
 
 - **Case management**: investigators, scope, authorization and history
 - **Evidence and chain of custody**: SHA-256 hashing on intake, read-only originals
@@ -23,13 +23,24 @@ Development documentation (in Portuguese): [environment, routes, database and co
 
 ---
 
+## Version 0.0.1
+
+- **Navigation**: sidebar with Home and Forensic Analysis pages; Home displays the backend connection status.
+- **Notes**: create, list and delete notes in Forensic Analysis → Notes, with a title, content and creation date. Notes are listed newest first and persist in the local H2 database.
+- **Clear analysis**: the “Apagar tudo” button asks for confirmation and currently deletes all notes in the database.
+- **API**: health check, note listing/creation/deletion and analysis clearing through `/api` routes.
+- **Database**: Flyway migration creates the `notes` table on backend startup.
+- **Current limits**: File Analysis is an empty tab. Authentication, case management, evidence handling, forensic processing, timeline, AI and reports are not implemented yet.
+
+---
+
 ## Tech stack
 
 | Part | Technology |
 |---|---|
-| Backend | Java 25 · Spring Boot · Spring Data JPA · Validation |
+| Backend | Java 25 · Spring Boot 4.2.0 · Spring Data JPA · Validation |
 | Database | H2 (embedded SQL) · Flyway (migrations) |
-| Frontend | React · TypeScript · Vite |
+| Frontend | React · TypeScript · Vite · Lucide React |
 | Build | Maven (backend) · npm (frontend) |
 
 ---
@@ -37,13 +48,20 @@ Development documentation (in Portuguese): [environment, routes, database and co
 ## Project structure
 
 ```
-meratan-v2/
+meratan/
+├── Docs/
+│   └── README.md     # Development documentation (Portuguese)
 ├── backend/          # Java API (Spring Boot)
 │   ├── mvnw
 │   ├── pom.xml
 │   └── src/main/
-│       ├── java/br/com/meratan/backend/
+│       ├── java/br/com/meratan/
+│       │   ├── HealthController.java
+│       │   ├── forensic/
+│       │   └── note/
 │       └── resources/
+│           ├── application.properties
+│           └── db/migration/
 └── frontend/         # React UI (Vite + TypeScript)
     ├── index.html
     ├── package.json
@@ -51,7 +69,9 @@ meratan-v2/
     ├── tsconfig.json
     └── src/
         ├── main.tsx
-        └── App.tsx
+        ├── App.tsx
+        ├── components/    # Sidebar and tabs
+        └── pages/         # Home, Forensic Analysis and Notes
 ```
 
 ---
@@ -61,8 +81,8 @@ meratan-v2/
 | Tool | Version | How to check |
 |---|---|---|
 | Java (JDK) | 25 (LTS) | `java -version` |
-| Maven | 3.8+ | `mvn -v` |
-| Node.js | 20.19+ or 22+ | `node -v` |
+| Maven | Included via Maven Wrapper | `./mvnw -v` (inside `backend/`) |
+| Node.js | `^20.19.0 \|\| >=22.12.0` | `node -v` |
 
 To install on Ubuntu:
 
@@ -99,7 +119,7 @@ The first time, install the dependencies:
 
 ```bash
 cd frontend
-npm install
+npm ci
 ```
 
 Then run it:
@@ -111,6 +131,10 @@ npm run dev
 Open **http://localhost:5173** in your browser.
 
 During development, Vite forwards every request starting with `/api` to the backend on port 8080 (see the `proxy` setting in `vite.config.ts`).
+
+Select **Home** in the sidebar to check the backend status, or **Forensic Analysis → Notes** to manage notes.
+
+The database is stored at `backend/data/meratan.mv.db` and is excluded from Git. Always start the backend from `backend/` so it uses the same database file.
 
 ### To stop
 

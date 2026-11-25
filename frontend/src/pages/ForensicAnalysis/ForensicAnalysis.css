@@ -1,3 +1,77 @@
-.forensic .tabs {
-    margin-top: 57px;
+/* topo: abas + botão */
+.forensic-top {
+  display: flex;
+  align-items: flex-end;
+  margin-top: 57px;
+}
+
+.forensic-top .tabs {
+  flex: 1;
+}
+
+.clear-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: 1px solid #5a1a1a;
+  color: #e05555;
+  padding: 6px 12px;
+  margin: 0 0 30px 16px;
+  cursor: pointer;
+}
+
+.clear-button:hover {
+  background: #2a0a0a;
+}
+
+/* notas: formulário */
+.notes-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 600px;
+  margin-bottom: 24px;
+}
+
+.notes-form input,
+.notes-form textarea {
+  background: #0b0b0b;
+  border: 1px solid #222;
+  color: #fff;
+  padding: 10px;
+  font-family: inherit;
+}
+
+.notes-form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.notes-form button,
+.note-header button {
+  background: none;
+  border: 1px solid #444;
+  color: #ccc;
+  padding: 6px 12px;
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+/* notas: lista */
+.note {
+  border: 1px solid #222;
+  padding: 16px;
+  margin-bottom: 12px;
+  max-width: 600px;
+}
+
+.note-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.note small {
+  color: #666;
 }
