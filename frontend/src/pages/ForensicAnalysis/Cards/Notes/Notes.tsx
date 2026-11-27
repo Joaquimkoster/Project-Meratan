@@ -57,16 +57,19 @@ export default function Notes() {
                 <button onClick={save}>Salvar nota</button>
             </div>
 
+
+            <div className='lista-notas'>
             {notes.map(note => (
                 <div key={note.id} className="note">
                     <div className="note-header">
-                        <strong>#{note.id} · {note.title}</strong>
+                        <strong>{note.title}</strong>
                         <button onClick={() => remove(note.id)}>excluir</button>
                     </div>
                     <p>{note.content}</p>
                     <small>{new Date(note.createdAt).toLocaleString('pt-BR')}</small>
                 </div>
             ))}
+            </div>
         </div>
     )
 }

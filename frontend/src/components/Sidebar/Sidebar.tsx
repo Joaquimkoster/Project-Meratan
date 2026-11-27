@@ -2,7 +2,8 @@ import './Sidebar.css'
 
 const pages = [
     'Home',
-    'Forensic Analysis'
+    'Forensic Analysis',
+    'AI'
 ]
 
 type Props = {

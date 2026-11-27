@@ -1,12 +1,12 @@
 import './ForensicAnalysis.css'
 import { useState } from 'react'
 import Tabs, { type Tab } from '../../components/Tabs/Tabs'
-import { Paperclip, FileText, Trash2 } from 'lucide-react'
+import { Paperclip, Trash2 } from 'lucide-react'
 import Notes from './Cards/Notes/Notes'
+import Files from './Cards/Files/Files'
 
 const tabs: Tab[] = [
   { id: 'file-analysis', label: 'File Analysis', icon: Paperclip },
-  { id: 'notes', label: 'Notes', icon: FileText },
 ]
 
 export default function ForensicAnalysis() {
@@ -17,8 +17,10 @@ export default function ForensicAnalysis() {
     const ok = confirm('Apagar TODAS as informações da análise forense? Isso não pode ser desfeito.')
     if (!ok) return
 
-    fetch('/api/forensic', { method: 'DELETE' })
-      .then(() => setVersion(v => v + 1))
+    Promise.all([
+      fetch('/api/forensic', { method: 'DELETE' }),   // notas (o que já existia)
+      fetch('/api/files', { method: 'DELETE' }),      // arquivos
+    ]).then(() => setVersion(v => v + 1))
   }
 
   return (
@@ -30,8 +32,13 @@ export default function ForensicAnalysis() {
         </button>
       </div>
 
+
       <div key={version}>
-        {tab === 'notes' && <Notes />}
+        {tab === 'file-analysis' &&
+          <div className='painel-direita'>
+            <Notes /> <Files />
+          </div>}
+
       </div>
     </div>
   )

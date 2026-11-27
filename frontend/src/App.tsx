@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Sidebar from './components/Sidebar/Sidebar';
 import Home from './pages/Home/Home';
 import ForensicAnalysis from './pages/ForensicAnalysis/ForensicAnalysis';
+import AI from './pages/AI/AI'
 
 export default function App() {
   const [page, setPage] = useState('home');
@@ -21,6 +22,7 @@ export default function App() {
       <main style={{ flex: 1, padding: 32 }}>
         {page === 'Home' && <Home health={health} />}
         {page === 'Forensic Analysis' && <ForensicAnalysis />}
+        {page === 'AI' && <AI />}
       </main>
     </div>
   )
